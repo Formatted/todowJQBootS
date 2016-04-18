@@ -9,10 +9,32 @@ closedTodo = ["closed todo", "closed to dododododo", "closer to do little"];
 
 
 // -------------------------------------
+var addToOpenTodo = function() {
+  var inputTD = $("#toDoText").val();
+  if (inputTD !== "") {
+      openTodo.push(inputTD);
+      $("#toDoText").val("");
+  }
+};
+
+var addToDone = function(ddd) {
+    closedTodo.push(openTodo[ddd]);
+    openTodo.splice(ddd, 1);
+    displayToDoList();
+}
+
+var remFromToDoList = function(ddd) {
+    openTodo.splice(ddd, 1);
+    displayToDoList();
+}
+
 var displayToDoList = function() {
     var filler = "";
     for (var key in openTodo) {
-        filler += "<li>" + openTodo[key] + "</li>";
+        filler += "<li id=" + key + ">" + openTodo[key] 
+        + '<a style="margin:8px" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-ok"></span></a>'
+        + '<a class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></a>'
+        + "</li>";
     }
     $("#myList").html(filler);
 };
