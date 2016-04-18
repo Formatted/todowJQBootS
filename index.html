@@ -34,18 +34,18 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a>
                         Todo list
                     </a>
                 </li>
                 <li>
-                    <a href="#">Open</a>
+                    <a href="#open" id="open">Open</a>
                 </li>
                 <li>
-                    <a href="#">Closed</a>
+                    <a href="#addRowD" id="addRowD">Closed</a>
                 </li>
                 <li>
-                    <a href="#">Stats</a>
+                    <a id="stats">Stats</a>
                 </li>
             </ul>
         </div>
@@ -56,10 +56,40 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <h1>To Do List</h1>
+                        
+                        <!--OPEN-->
+                        <div class="row"  id="addRow">
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                <input type="text" class="form-control" placeholder="ToDo goes here" id="toDoText" autofocus>
+                                    </div>
+                                    <div class="col-md-2">
+                                <input class="btn btn-default" type="submit" value="Submit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                            <p>Add to the list with the submit button or by pressing Enter</p>
+                            </div>
+                            <div class="col-md-8">
+                                <ul id="myList">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!--END of OPEN-->
+                        
+                        <!--<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>-->
+                        <!--This is under the input row-->
+                        
+                        <!--list of closed-->
+                        <div class="row" id="closedList">
+                            
+                            
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -81,7 +111,19 @@
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+        $("#addRow").toggleClass("toggled");
+    });
+    $("#addRowD").click(function(e) {
+        e.preventDefault();
+        $("#addRow").hide( "slow" );
+        $("#closedList").show( "slow" );
+        displayDoneList();
+    })
+    $("#open").click(function(e) {
+        e.preventDefault();
+        $("#closedList").hide( "slow" );
+        $("#addRow").show( "slow" );
+        displayToDoList();
     });
     </script>
 
