@@ -45,7 +45,7 @@
                     <a href="#addRowD" id="addRowD">Closed</a>
                 </li>
                 <li>
-                    <a id="stats">Stats</a>
+                    <a href="#stats" id="stats">Stats</a>
                 </li>
             </ul>
         </div>
@@ -89,7 +89,9 @@
                             
                             
                         </div>
-                        
+                        <div class="row" id="listStats">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,14 +119,23 @@
         e.preventDefault();
         $("#addRow").hide( "slow" );
         $("#closedList").show( "slow" );
+        $("#listStats").hide( "slow" );
         displayDoneList();
     })
     $("#open").click(function(e) {
         e.preventDefault();
         $("#closedList").hide( "slow" );
+        $("#listStats").hide( "slow" );
         $("#addRow").show( "slow" );
         displayToDoList();
     });
+    $("#stats").click(function(e) {
+        e.preventDefault();
+        $("#closedList").hide( "slow" );
+        $("#addRow").hide( "slow" );
+        $("#listStats").show( "slow" );
+        displayStats();
+    })
     $("#tdBtn").click(function() {
     addToOpenTodo();
     displayToDoList();
