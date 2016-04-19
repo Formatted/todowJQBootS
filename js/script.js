@@ -46,3 +46,14 @@ var displayDoneList = function() {
     }
     $("#closedList").html(filler);
 };
+
+var displayStats = function() {
+    var filler = "";
+    if (openTodo.length > 0) {
+        filler += "<h3>You have to do " + openTodo.length + " more...</h3>";
+    }
+    if (closedTodo.length > 0) {
+        filler += "<h3>You have done " + closedTodo.length + " already!</h3>";
+    }
+    $("#listStats").html(filler);
+};
